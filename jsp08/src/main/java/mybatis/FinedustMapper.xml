@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="FinedustMapper">
+	
+	<select id="selectList" resultType="dto.Finedust" >
+		SELECT * FROM finedust
+		ORDER BY dataDate
+	</select>
+	
+	<select id="selectList_name" resultType="dto.Finedust">
+		SELECT * FROM finedust
+		WHERE districtName =#{districtName}
+		ORDER BY dataDate
+	</select>
+	
+	<insert id="insert" parameterType="java.util.Map">
+		INSERT INTO finedust(
+			resultCode ,
+			resultMsg ,
+			numOfRows ,
+			pageNo ,
+			totalCount ,
+			sn ,
+			dataDate ,
+			districtName,
+			moveName ,
+			itemCode,
+			issueGbn,
+			issueDate,
+			issueTime,
+			issueVal,
+			clearDate,
+			clearTime,
+			clearVal)
+		VALUES(
+			#{resultCode} ,
+			#{resultMsg} ,
+			#{numOfRows} ,
+			#{pageNo} ,
+			#{totalCount} ,
+			#{sn} ,
+			#{dataDate} ,
+			#{districtName},
+			#{moveName} ,
+			#{itemCode},
+			#{issueGbn},
+			#{issueDate},
+			#{issueTime},
+			#{issueVal},
+			#{clearDate},
+			#{clearTime},
+			#{clearVal}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE finedust 
+		SET 
+			resultCode = #{resultCode},
+			resultMsg = #{resultMsg},
+			numOfRows = #{numOfRows},
+			pageNo = #{pageNo},
+			totalCount = #{totalCount},
+			districtName = #{districtName},
+			dataDate= #{tdataDateitle},
+			moveName= #{moveName},
+			itemCode= #{itemCode},
+			issueGbn= #{issueGbn},
+			issueDate= #{issueDate},
+			issueTime = #{issueTime},
+			issueVal = #{issueVal},
+			clearDate = #{clearDate},
+			clearTime = #{clearTime},
+			clearVal = #{clearVal}
+		WHERE sn = #{sn}	
+	
+	</update>
+	
+</mapper>
